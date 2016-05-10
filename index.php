@@ -19,8 +19,8 @@ _EN;
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="http://maps.googleapis.com/maps/api/js"></script>
-    <script src="../js/index.js"></script>
-    <link rel="stylesheet" type="text/css" href="../css/index.css">
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
