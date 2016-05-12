@@ -138,7 +138,7 @@ _EN;
         </div>
         <div id="HARD" class="col-sm-4">
             <span class="glyphicon glyphicon-wrench logo-small"></span>
-            <h4 style="color:#303030;">bestcreative</h4>
+            <h4 style="color:#303030;">worstcreative</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
     </div>
