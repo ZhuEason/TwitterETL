@@ -105,8 +105,7 @@ _EN;
 
 <!-- Container (Services Section) -->
 <div id="services" class="container-fluid text-center">
-    <h2>SERVICES</h2>
-    <h4>What we offer</h4>
+    <h2>Services Example</h2>
     <br>
     <div class="row slideanim">
         <div id="power" class="col-sm-4">
