@@ -2,7 +2,6 @@
 
 include "connectdb.php";
 
-
 echo <<<_END
 
 _EN;
@@ -49,8 +48,8 @@ _EN;
 </nav>
 
 <div class="jumbotron text-center">
-    <h1>Company</h1>
-    <p>We specialize in blablabla</p>
+    <h1>Two-Alpha</h1>
+    <p>We specialize in Data Analysis</p>
     <form class="form-inline">
         <input type="email" class="form-control" size="50" placeholder="Email Address" required>
         <button type="button" class="btn btn-danger">Subscribe</button>
@@ -61,16 +60,15 @@ _EN;
 <div id="about" class="container-fluid">
     <div class="row">
         <div class="col-sm-8">
-            <h2>About Company Page</h2><br>
-            <h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.</h4><br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-                deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-                ut aliquip ex ea commodo consequat.</p>
+            <h2>About Company</h2><br>
+            <h4>Ten days ago, we set out to create products that would transform the way organizations use their data.
+                Today, our products are deployed at the most critical government, commercial, and non-profit institutions
+                in the world to solve problems we hadn’t even dreamed of back then.</h4><br>
+            <p>We’re focused on creating the world’s best user experience for working with data, one that empowers
+               people to ask and answer complex questions without requiring them to master querying
+               languages, statistical modeling, or the command line. To achieve this, we build platforms for integrating,
+               managing, and securing data on top of which we layer applications for fully interactive human-driven,
+               machine-assisted analysis.</p>
             <br>
             <button class="btn btn-default btn-lg">Get in Touch</button>
         </div>
@@ -87,15 +85,20 @@ _EN;
         </div>
         <div class="col-sm-8">
             <h2>Our Values</h2><br>
-            <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
-            <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
-                ex ea commodo consequat.</p>
+            <h4><strong>MISSION:</strong> Our customers have data and a deep understanding of the problems they face.
+                We have proven products and an engineering mindset. We send our engineers into the field to work
+                directly with our customers—deploying our products, integrating their data, optimizing their workflows,
+                and producing operational results in weeks, not years. By establishing a true partnership,
+                we help customers get the most out of our products and engineering expertise</h4><br>
+            <p><strong>VISION:</strong> Fraudsters are sophisticated criminals, changing their tactics nearly every day.
+                To combat this kind of threat, Palantir Anti-Fraud augments human analytic capabilities by capitalizing
+                on the strengths of machine analysis while avoiding the risks of purely automated approaches.
+                Palantir’s approach to this kind of human-computer symbiosis was inspired by lessons learned from
+                combating adaptive threats at PayPal. Palantir Anti-Fraud uses algorithms to comb through existing
+                archives and streams of new data in order to isolate and surface patterns based on rules defined by
+                human analysts. The analysts, in turn, investigate cases using their intuition, experience, and domain
+                knowledge, identifying and responding to subtle cues, edge cases, and new indicators of evolving fraud
+                tactics.</p>
         </div>
     </div>
 </div>
@@ -455,25 +458,30 @@ if ($stmt = $mysqli->prepare("SELECT * FROM mostretweets")) {
 
 echo <<<_END
 
-<div id="userhotperiod" class="container-fluid text-center target-detail" style="height:400px; display:none;">
-    <form class="form-inline" style="position:relative; top:50px;">
+<div id="userhotperiod" class="container-fluid text-center target-detail" style="display:none;">
+    <form class="form-inline">
         <input id="searchTxt" type="number" class="form-control" size="50" placeholder="User Id" required>
         <button id="search" type="button" class="btn btn-danger">Search</button>
     </form>
 _END;
 
-    echo "<p id=\"userhottime\" style=\"position:relative; top:50px;\"></p>";
+    echo "<p id=\"userhottime\"></p>";
 
 echo <<<_END
-    <button type="button" class="btn btn-success return" style="position:relative; top:50px;">Return</button>
+    <button type="button" class="btn btn-success return">Return</button>
+
+    <div id=period_imag>
+        </br></br>
+        <p>The line chart of the user hot time</p>
+        <img src="./imag/hot_period.png" class="img-responsive center-block" alt="Period_imag" width="500" height="300">
+    </div>
+
 </div>
 
 
 
 <!-- Container (Portfolio Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
-    <h2>Portfolio</h2><br>
-    <h4>What we have created</h4>
 
     <h2>What our customers say</h2>
     <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">

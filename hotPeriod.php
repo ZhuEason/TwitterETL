@@ -11,7 +11,7 @@ include "connectdb.php";
 $q = trim($_GET['q']);
 
 
-$sql = "SELECT * FROM userhotperiod WHERE uid = ".$q;
+$sql = "SELECT * FROM userhotperiod WHERE uid = ".$q." LIMIT 1";
 
 if ($stmt = $mysqli->prepare($sql)) {
     $stmt->execute();
