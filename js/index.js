@@ -71,13 +71,37 @@ $(document).ready(function(){
         });
     });
 
+
+
     $("#CERTIFIED").click(function() {
         $("#services").fadeOut(function() {
             $("#hottesthashtags").fadeIn(1000);
         })
-    })
+    });
 
 
+    $("#HARD").click(function() {
+        $("#services").fadeOut(function() {
+            $("#hotusers").fadeIn(1000);
+        });
+    });
 
+    $("#OK").click(function() {
+        $("#services").fadeOut(function() {
+            $("#hotusers").fadeIn(1000);
+        });
+    });
+
+    $("#VEDIO").click(function() {
+        $("#services").fadeOut(function() {
+            $("#mostfollowers").fadeIn(1000);
+        });
+    });
+
+    $("#FILE").click(function() {
+        $("#services").fadeOut(function() {
+            $("#mostretweets").fadeIn(1000);
+        });
+    });
 
 });

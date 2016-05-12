@@ -131,12 +131,30 @@ _EN;
         </div>
         <div id="CERTIFIED" class="col-sm-4">
             <span class="glyphicon glyphicon-certificate logo-small"></span>
-            <h4>CERTIFIED</h4>
+            <h4>hottesthashtags</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
-        <div class="col-sm-4">
+        <div id="HARD" class="col-sm-4">
             <span class="glyphicon glyphicon-wrench logo-small"></span>
-            <h4 style="color:#303030;">HARD WORK</h4>
+            <h4 style="color:#303030;">bestcreative</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+        </div>
+    </div>
+    <br><br>
+    <div class="row slideanim">
+        <div id="OK" class="col-sm-4">
+            <span class="glyphicon glyphicon-ok logo-small"></span>
+            <h4>hotUsers</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+        </div>
+        <div id="VEDIO" class="col-sm-4">
+            <span class="glyphicon glyphicon-play-circle logo-small"></span>
+            <h4>mostfollowers</h4>
+            <p>Lorem ipsum dolor sit amet..</p>
+        </div>
+        <div id="FILE" class="col-sm-4">
+            <span class="glyphicon glyphicon-file logo-small"></span>
+            <h4>mostretweets</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
     </div>
@@ -311,6 +329,129 @@ if ($stmt = $mysqli->prepare("SELECT * FROM hottesthashtags")) {
     }
 }
 
+if ($stmt = $mysqli->prepare("SELECT * FROM hotusers")) {
+    $stmt->execute();
+
+    $stmt->bind_result($id, $uid, $username, $score);
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $url = "index.php";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    } else {
+        echo "<div id=\"hotusers\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>hotUsers</h2>";
+        echo "<br>";
+        echo "<table class=\"table .table-striped text-center\">";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th class=\"text-center col-sm-3\">uid</th>";
+        echo "<th class=\"text-center col-sm-3\">username</th>";
+        echo "<th class=\"text-center col-sm-6\">score</th>";
+        echo "</tr>";
+        echo "</thead>";
+
+        while ($stmt->fetch()) {
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>$uid</td>";
+            echo "<td>$username</td>";
+            echo "<td>$score</td>";
+        }
+
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "<button type=\"button\" class=\"btn btn-success return\">Return</button>";
+        echo "</div>";
+    }
+}
+
+
+if ($stmt = $mysqli->prepare("SELECT * FROM mostfollowers")) {
+    $stmt->execute();
+
+    $stmt->bind_result($id, $uid, $username, $friendCount);
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $url = "index.php";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    } else {
+        echo "<div id=\"mostfollowers\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>mostfollowers</h2>";
+        echo "<br>";
+        echo "<table class=\"table .table-striped text-center\">";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th class=\"text-center col-sm-3\">uid</th>";
+        echo "<th class=\"text-center col-sm-3\">username</th>";
+        echo "<th class=\"text-center col-sm-6\">mostfollowers</th>";
+        echo "</tr>";
+        echo "</thead>";
+
+        while ($stmt->fetch()) {
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>$uid</td>";
+            echo "<td>$username</td>";
+            echo "<td>$friendCount</td>";
+        }
+
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "<button type=\"button\" class=\"btn btn-success return\">Return</button>";
+        echo "</div>";
+    }
+}
+
+if ($stmt = $mysqli->prepare("SELECT * FROM mostretweets")) {
+    $stmt->execute();
+
+    $stmt->bind_result($id, $uid, $tweetid, $text, $retweetCount);
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $url = "index.php";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    } else {
+        echo "<div id=\"mostretweets\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>mostretweets</h2>";
+        echo "<br>";
+        echo "<table class=\"table .table-striped text-center\">";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th class=\"text-center col-sm-1\">uid</th>";
+        echo "<th class=\"text-center col-sm-1\">tweetid</th>";
+        echo "<th class=\"text-center col-sm-6\">text</th>";
+        echo "<th class=\"text-center col-sm-2\">retweetCount</th>";
+        echo "</tr>";
+        echo "</thead>";
+
+        while ($stmt->fetch()) {
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>$uid</td>";
+            echo "<td>$tweetid</td>";
+            echo "<td>$text</td>";
+            echo "<td>$retweetCount</td>";
+        }
+
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "<button type=\"button\" class=\"btn btn-success return\">Return</button>";
+        echo "</div>";
+    }
+}
+
 
 echo <<<_END
 
@@ -333,30 +474,6 @@ echo <<<_END
 <div id="portfolio" class="container-fluid text-center bg-grey">
     <h2>Portfolio</h2><br>
     <h4>What we have created</h4>
-    <div class="row text-center slideanim">
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="paris.jpg" alt="Paris" width="400" height="300">
-                <p><strong>Paris</strong></p>
-                <p>Yes, we built Paris</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="newyork.jpg" alt="New York" width="400" height="300">
-                <p><strong>New York</strong></p>
-                <p>We built New York</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <div class="thumbnail">
-                <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                <p><strong>San Francisco</strong></p>
-                <p>Yes, San Fran is ours</p>
-            </div>
-        </div>
-    </div>
-    <br>
 
     <h2>What our customers say</h2>
     <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
