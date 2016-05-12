@@ -44,4 +44,40 @@ $(document).ready(function(){
             $("#services").fadeIn(1000);
         })
     });
+
+    $("#search").click(function() {
+        //hotPeriod.php?q=1120182512
+        $.get("hotPeriod.php?q="+$("#searchTxt").val(), function(data, status){
+            //alert(data);
+            $("#userhottime").html(data);
+        });
+    });
+
+    $("#love").click(function() {
+        $("#services").fadeOut(function() {
+            $("#userhotperiod").fadeIn(1000);
+        });
+    });
+
+    $("#job").click(function() {
+        $("#services").fadeOut(function() {
+            $("#avglength").fadeIn(1000);
+        });
+    });
+
+    $("#green").click(function() {
+        $("#services").fadeOut(function() {
+            $("#bestcreative").fadeIn(1000);
+        });
+    });
+
+    $("#CERTIFIED").click(function() {
+        $("#services").fadeOut(function() {
+            $("#hottesthashtags").fadeIn(1000);
+        })
+    })
+
+
+
+
 });

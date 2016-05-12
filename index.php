@@ -2,6 +2,7 @@
 
 include "connectdb.php";
 
+
 echo <<<_END
 
 _EN;
@@ -107,28 +108,28 @@ _EN;
     <div class="row slideanim">
         <div id="power" class="col-sm-4">
             <span class="glyphicon glyphicon-off logo-small"></span>
-            <h4>POWER</h4>
+            <h4>Top 10 Twitters</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
         <div id="love" class="col-sm-4">
             <span class="glyphicon glyphicon-heart logo-small"></span>
-            <h4>LOVE</h4>
+            <h4>userhotperiod</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
         <div id="job" class="col-sm-4">
             <span class="glyphicon glyphicon-lock logo-small"></span>
-            <h4>JOB DONE</h4>
+            <h4>avglongestweets</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
     </div>
     <br><br>
     <div class="row slideanim">
-        <div class="col-sm-4">
+        <div id="green" class="col-sm-4">
             <span class="glyphicon glyphicon-leaf logo-small"></span>
-            <h4>GREEN</h4>
+            <h4>bestcreative</h4>
             <p>Lorem ipsum dolor sit amet..</p>
         </div>
-        <div class="col-sm-4">
+        <div id="CERTIFIED" class="col-sm-4">
             <span class="glyphicon glyphicon-certificate logo-small"></span>
             <h4>CERTIFIED</h4>
             <p>Lorem ipsum dolor sit amet..</p>
@@ -142,6 +143,7 @@ _EN;
 </div>
 
 _END;
+
 
 // hottest twitter
 if ($stmt = $mysqli->prepare("SELECT * FROM topfavorite")) {
@@ -189,11 +191,11 @@ if ($stmt = $mysqli->prepare("SELECT * FROM topfavorite")) {
 }
 
 
-//
-if ($stmt = $mysqli->prepare("SELECT * FROM topfavorite")) {
+
+if ($stmt = $mysqli->prepare("SELECT * FROM avglongestweets")) {
     $stmt->execute();
 
-    $stmt->bind_result($id, $uid, $tweetid, $text, $favoriteCount);
+    $stmt->bind_result($id, $uid, $username, $avglength);
     $stmt->store_result();
 
     if ($stmt->num_rows == 0) {
@@ -202,29 +204,103 @@ if ($stmt = $mysqli->prepare("SELECT * FROM topfavorite")) {
         echo "window.location.href='$url'";
         echo "</script>";
     } else {
-        echo "<div id=\"target-power\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
-        echo "<h2>SERVICES</h2>";
-        echo "<h4>What we offer</h4>";
+        echo "<div id=\"avglength\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>avglongestweets</h2>";
         echo "<br>";
         echo "<table class=\"table .table-striped text-center\">";
         echo "<thead>";
         echo "<tr>";
-        echo "<th class=\"text-center col-sm-1\">id</th>";
-        echo "<th class=\"text-center col-sm-1\">uid</th>";
-        echo "<th class=\"text-center col-sm-1\">tweetid</th>";
-        echo "<th class=\"text-center col-sm-8\">text</th>";
-        echo "<th class=\"text-center col-sm-1\">favoriteCount</th>";
+        //echo "<th class=\"text-center col-sm-1\">uid</th>";
+        echo "<th class=\"text-center col-sm-4\">username</th>";
+        echo "<th class=\"text-center col-sm-8\">avglength</th>";
         echo "</tr>";
         echo "</thead>";
 
         while ($stmt->fetch()) {
             echo "<tbody>";
             echo "<tr>";
-            echo "<td>$id</td>";
+            //echo "<td>$uid</td>";
+            echo "<td>$username</td>";
+            echo "<td>$avglength</td>";
+        }
+
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "<button type=\"button\" class=\"btn btn-success return\">Return</button>";
+        echo "</div>";
+    }
+}
+
+if ($stmt = $mysqli->prepare("SELECT * FROM bestcreative")) {
+    $stmt->execute();
+
+    $stmt->bind_result($id, $uid, $username, $tweetCount);
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $url = "index.php";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    } else {
+        echo "<div id=\"bestcreative\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>bestcreative</h2>";
+        echo "<br>";
+        echo "<table class=\"table .table-striped text-center\">";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th class=\"text-center col-sm-3\">uid</th>";
+        echo "<th class=\"text-center col-sm-3\">username</th>";
+        echo "<th class=\"text-center col-sm-6\">tweetCount</th>";
+        echo "</tr>";
+        echo "</thead>";
+
+        while ($stmt->fetch()) {
+            echo "<tbody>";
+            echo "<tr>";
             echo "<td>$uid</td>";
-            echo "<td>$tweetid</td>";
-            echo "<td>$text</td>";
-            echo "<td>$favoriteCount</td>";
+            echo "<td>$username</td>";
+            echo "<td>$tweetCount</td>";
+        }
+
+        echo "</tr>";
+        echo "</tbody>";
+        echo "</table>";
+        echo "<button type=\"button\" class=\"btn btn-success return\">Return</button>";
+        echo "</div>";
+    }
+}
+
+
+if ($stmt = $mysqli->prepare("SELECT * FROM hottesthashtags")) {
+    $stmt->execute();
+
+    $stmt->bind_result($id, $hashtag, $count);
+    $stmt->store_result();
+
+    if ($stmt->num_rows == 0) {
+        $url = "index.php";
+        echo "<script type='text/javascript'>";
+        echo "window.location.href='$url'";
+        echo "</script>";
+    } else {
+        echo "<div id=\"hottesthashtags\" class=\"target-detail container-fluid text-center\" style=\"display:none;\">";
+        echo "<h2>hottesthashtags</h2>";
+        echo "<br>";
+        echo "<table class=\"table .table-striped text-center\">";
+        echo "<thead>";
+        echo "<tr>";
+        echo "<th class=\"text-center col-sm-3\">hashtag</th>";
+        echo "<th class=\"text-center col-sm-6\">count</th>";
+        echo "</tr>";
+        echo "</thead>";
+
+        while ($stmt->fetch()) {
+            echo "<tbody>";
+            echo "<tr>";
+            echo "<td>$hashtag</td>";
+            echo "<td>$count</td>";
         }
 
         echo "</tr>";
@@ -237,6 +313,21 @@ if ($stmt = $mysqli->prepare("SELECT * FROM topfavorite")) {
 
 
 echo <<<_END
+
+<div id="userhotperiod" class="container-fluid text-center target-detail" style="height:400px; display:none;">
+    <form class="form-inline" style="position:relative; top:50px;">
+        <input id="searchTxt" type="number" class="form-control" size="50" placeholder="User Id" required>
+        <button id="search" type="button" class="btn btn-danger">Search</button>
+    </form>
+_END;
+
+    echo "<p id=\"userhottime\" style=\"position:relative; top:50px;\"></p>";
+
+echo <<<_END
+    <button type="button" class="btn btn-success return" style="position:relative; top:50px;">Return</button>
+</div>
+
+
 
 <!-- Container (Portfolio Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
@@ -302,6 +393,7 @@ echo <<<_END
         </a>
     </div>
 </div>
+
 
 <!-- Container (Pricing Section) -->
 <div id="pricing" class="container-fluid">
@@ -439,3 +531,4 @@ echo <<<_END
 
 _END;
 
+?>
