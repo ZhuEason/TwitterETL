@@ -471,7 +471,7 @@ echo <<<_END
 
     <div id=period_imag>
         </br></br>
-        <p>The line chart of the user hot time</p>
+        <p>total number of tweets people post at each time slot</p>
         <img src="./imag/hot_period.png" class="img-responsive center-block" alt="Period_imag" width="500" height="300">
     </div>
 
